@@ -1,0 +1,385 @@
+{% load static %}
+
+<!-- Add New Estimation -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_add">
+    <div class="offcanvas-header border-bottom">
+        <h4>Add New Contract</h4>
+        <button type="button"
+            class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+            data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="ti ti-x"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="estimations">
+            <div>
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Client</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_client"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option>NovaWave LLC</option>
+                            <option>BlueSky Industries</option>
+                            <option>ASilver Hawkdams</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Bill To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Ship To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Project</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#save_view"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option>Truelysell</option>
+                            <option>Dreamschat</option>
+                            <option>Servbook</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Estimate By <span class="text-danger">*</span></label>
+                            <select class="select2">
+                                <option>Choose</option>
+                                <option>Darlee Robertson</option>
+                                <option>Sharon Roy</option>
+                                <option>Vaughan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Amount<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Currency</label>
+                            <select class="select2">
+                                <option>Choose</option>
+                                <option>$</option>
+                                <option>€</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Estimate Date <span
+                                    class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Expiry Date<span class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Status</label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Tags <span class="text-danger">*</span></label>
+                            <input class="input-tags form-control" type="text" data-role="tagsinput"
+                                name="Label" value="Tag 1, Tag 2, Tag 3">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Attachment <span class="text-danger">*</span></label>
+                        <div class="drag-attach">
+                            <input type="file">
+                            <div class="img-upload">
+                                <i class="ti ti-file-broken"></i>Upload File
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="summernote"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-end">
+                <button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#create_success">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Add New Estimation -->
+
+<!-- Edit Estimation -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_edit">
+    <div class="offcanvas-header border-bottom">
+        <h4>Edit Estimation</h4>
+        <button type="button"
+            class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+            data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="ti ti-x"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="estimations">
+            <div>
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Client</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_client"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option selected>NovaWave LLC</option>
+                            <option>BlueSky Industries</option>
+                            <option>ASilver Hawkdams</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Bill To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Ship To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Project</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#save_view"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option selected>Truelysell</option>
+                            <option>Dreamschat</option>
+                            <option>Servbook</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Estimate By <span class="text-danger">*</span></label>
+                            <select class="select2">
+                                <option>Choose</option>
+                                <option selected>Darlee Robertson</option>
+                                <option>Sharon Roy</option>
+                                <option>Vaughan</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Amount<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text" value="2,15,000">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Currency</label>
+                            <select class="select2">
+                                <option>Choose</option>
+                                <option selected>$</option>
+                                <option>€</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Estimate Date <span
+                                    class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Expiry Date<span class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Status</label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Tags <span class="text-danger">*</span></label>
+                            <input class="input-tags form-control" type="text" data-role="tagsinput"
+                                name="Label" value="Tag 1, Tag 2, Tag 3">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="col-form-label">Attachment <span class="text-danger">*</span></label>
+                        <div class="drag-attach">
+                            <input type="file">
+                            <div class="img-upload">
+                                <i class="ti ti-file-broken"></i>Upload File
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="summernote"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center justify-content-end">
+                <button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+                <button type="button" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Edit Estimation -->
+
+<!-- Delete Estimations -->
+<div class="modal fade" id="delete_estimations" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="avatar avatar-xl bg-danger-light rounded-circle mb-3">
+                        <i class="ti ti-trash-x fs-36 text-danger"></i>
+                    </div>
+                    <h4 class="mb-2">Remove Estimation?</h4>
+                    <p class="mb-0">Are you sure you want to remove <br> estimation you selected.</p>
+                    <div class="d-flex align-items-center justify-content-center mt-4">
+                        <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+                        <a href="{% url 'estimations' %}" class="btn btn-danger">Yes, Delete it</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete Estimations -->
+
+<!-- Create Estimation -->
+<div class="modal custom-modal fade" id="create_success" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 m-0 justify-content-end">
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="success-message text-center">
+                    <div class="success-popup-icon bg-light-blue">
+                        <i class="ti ti-atom-2"></i>
+                    </div>
+                    <h3>Estimations Created Successfully!!!</h3>
+                    <p>View the details of estimations, created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Create Project -->
+
+<!-- Add New View -->
+<div class="modal custom-modal fade" id="save_view" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Project</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="estimations">
+                    <div class="mb-3">
+                        <label class="col-form-label">Project Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="modal-btn text-end">
+                        <a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add New View -->
+
+<!-- Add New View -->
+<div class="modal custom-modal fade" id="add_client" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Client</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="estimations">
+                    <div class="mb-3">
+                        <label class="col-form-label">Client Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="modal-btn text-end">
+                        <a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add New View -->

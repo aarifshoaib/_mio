@@ -1,0 +1,458 @@
+{% load static %}
+
+<!-- Add New Proposal -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_add">
+    <div class="offcanvas-header border-bottom">
+        <h4>Add New Proposal</h4>
+        <button type="button"
+            class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+            data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="ti ti-x"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="proposals">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Subject <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Date<span class="text-danger"> *</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="DD/MM/YY">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Open Till <span class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="DD/MM/YY">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Client <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>NovaWave LLC</option>
+                                <option>Silver Hawk</option>
+                                <option>Harbor View</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <label class="col-form-label">Project<span class="text-danger">*</span></label>
+                                <a href="#" class="label-add " data-bs-toggle="modal"
+                                    data-bs-target="#add_project"><i class="ti ti-square-rounded-plus"></i>Add
+                                    New</a>
+                            </div>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>Truelysell</option>
+                                <option>Dreamsports</option>
+                                <option>Best@laundry</option>
+                                <option>Doccure</option>
+                                <option>Kofejob</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Related to <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>Truelysell</option>
+                                <option>Dreamsports</option>
+                                <option>Best@laundry</option>
+                                <option>Doccure</option>
+                                <option>Kofejob</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <label class="col-form-label">Deals<span class="text-danger">*</span></label>
+                                <a href="#" class="label-add " data-bs-toggle="modal"
+                                    data-bs-target="#add_deal"><i class="ti ti-square-rounded-plus"></i>Add
+                                    New</a>
+                            </div>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>Truelysell</option>
+                                <option>Dreamsports</option>
+                                <option>Best@laundry</option>
+                                <option>Doccure</option>
+                                <option>Kofejob</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Currency</label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>High</option>
+                                <option>Low</option>
+                                <option>Medium</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Status <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option>Open</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Assigned to <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Attachment <span class="text-danger">*</span></label>
+                            <div class="drag-attach">
+                                <input type="file">
+                                <div class="img-upload">
+                                    <i class="ti ti-file-broken"></i>Upload File
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Tags </label>
+                            <input class="input-tags form-control" type="text" data-role="tagsinput"
+                                name="Label" value="Tag1, Tag2, Tag3">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="summernote"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-end">
+                <button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#create_success">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Add New Proposal -->
+
+<!-- Edit Proposal -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_edit">
+    <div class="offcanvas-header border-bottom">
+        <h4>Edit Proposal</h4>
+        <button type="button"
+            class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+            data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="ti ti-x"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="proposals">
+            <div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Subject <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" value="Web design Proposal">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Date<span class="text-danger"> *</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="DD/MM/YY"
+                                    value="11-06-2024">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Open Till <span class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-event"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="DD/MM/YY"
+                                    value="14-06-2024">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Client <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>NovaWave LLC</option>
+                                <option>Silver Hawk</option>
+                                <option selected>Harbor View</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <label class="col-form-label">Project<span class="text-danger">*</span></label>
+                                <a href="#" class="label-add " data-bs-toggle="modal"
+                                    data-bs-target="#add_project"><i class="ti ti-square-rounded-plus"></i>Add
+                                    New</a>
+                            </div>
+                            <select class="select">
+                                <option>Select</option>
+                                <option selected>Truelysell</option>
+                                <option>Dreamsports</option>
+                                <option>Best@laundry</option>
+                                <option>Doccure</option>
+                                <option>Kofejob</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Related to <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option selected>Deals</option>
+                                <option>Dreamsports</option>
+                                <option>Best@laundry</option>
+                                <option>Doccure</option>
+                                <option>Kofejob</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <label class="col-form-label">Deals<span class="text-danger">*</span></label>
+                                <a href="#" class="label-add " data-bs-toggle="modal"
+                                    data-bs-target="#add_deal"><i class="ti ti-square-rounded-plus"></i>Add
+                                    New</a>
+                            </div>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>Collins</option>
+                                <option>Dreamsports</option>
+                                <option>Best@laundry</option>
+                                <option>Doccure</option>
+                                <option>Kofejob</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Currency</label>
+                            <select class="select">
+                                <option>Select</option>
+                                <option>High</option>
+                                <option>Low</option>
+                                <option>Medium</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Status <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option selected>Open</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Assigned to <span class="text-danger">*</span></label>
+                            <select class="select">
+                                <option selected>Darlee Robertson</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Attachment <span class="text-danger">*</span></label>
+                            <div class="drag-attach">
+                                <input type="file">
+                                <div class="img-upload">
+                                    <i class="ti ti-file-broken"></i>Upload File
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Tags </label>
+                            <input class="input-tags form-control" type="text" data-role="tagsinput"
+                                name="Label" value="Tag1, Tag2, Tag3">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="summernote"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-end">
+                <button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+                <button type="button" class="btn btn-primary">Save Changes</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Edit Proposal -->
+
+<!-- Delete Proposals -->
+<div class="modal fade" id="delete_proposals" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="avatar avatar-xl bg-danger-light rounded-circle mb-3">
+                        <i class="ti ti-trash-x fs-36 text-danger"></i>
+                    </div>
+                    <h4 class="mb-2">Remove Proposal?</h4>
+                    <p class="mb-0">Are you sure you want to remove <br> proposal you selected.</p>
+                    <div class="d-flex align-items-center justify-content-center mt-4">
+                        <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+                        <a href="{% url 'proposals' %}" class="btn btn-danger">Yes, Delete it</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete Proposals -->
+
+<!-- Create Proposal -->
+<div class="modal custom-modal fade" id="create_success" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0 m-0 justify-content-end">
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="success-message text-center">
+                    <div class="success-popup-icon bg-light-blue">
+                        <i class="ti ti-atom-2"></i>
+                    </div>
+                    <h3>Proposals Created Successfully!!!</h3>
+                    <p>View the details of proposals, created</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Create Proposal -->
+
+<!-- Add New View -->
+<div class="modal custom-modal fade" id="save_view" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New View</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="projects">
+                    <div class="mb-3">
+                        <label class="col-form-label">View Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="modal-btn text-end">
+                        <a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add New View -->
+
+<!-- Add New View -->
+<div class="modal custom-modal fade" id="add_deal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Deal</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#">
+                    <div class="mb-3">
+                        <label class="col-form-label">Deal Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="modal-btn text-end">
+                        <a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add New View -->
+
+<!-- Add New View -->
+<div class="modal custom-modal fade" id="add_project" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add New Project</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="#">
+                    <div class="mb-3">
+                        <label class="col-form-label">Project Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="modal-btn text-end">
+                        <a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add New View -->

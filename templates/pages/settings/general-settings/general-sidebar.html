@@ -1,0 +1,17 @@
+<div class="col-xl-3 col-lg-12 theiaStickySidebar">
+  <!-- Settings Sidebar -->
+  <div class="card">
+    <div class="card-body">
+      <div class="settings-sidebar">
+        <h4 class="fw-semibold mb-3">General Settings</h4>
+        <div class="list-group list-group-flush settings-sidebar">
+          <a href="{% url 'profile' %}" class="fw-medium {% if request.path == '/profile' %}active{% endif %}">Profile</a>
+          <a href="{% url 'security' %}" class="fw-medium {% if request.path == '/security' %}active{% endif %}">Security</a>
+          <a href="{% url 'notifications' %}" class="fw-medium {% if request.path == '/notifications' %}active{% endif %}">Notifications</a>
+          <a href="{% url 'connected_apps' %}" class="fw-medium {% if request.path == '/connected-apps' %}active{% endif %}">Connected Apps</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Settings Sidebar -->
+</div>

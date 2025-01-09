@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  {% block head %}
+    {% include 'partials/head.html' %}
+  {% endblock head %}
+
+  <body class="{% if request.path == '/chat' %} main-chat-blk {% else %} {% endif %}">
+    {% if request.path == '/index' or request.path == '/leads-dashboard' or request.path == '/project-dashboard' %}
+      <div class="preloader">
+        <span class="loader"></span>
+      </div>
+    {% endif %}
+
+    <div class="main-wrapper">
+      {% block header %}
+        {% include 'partials/topbar.html' %}
+      {% endblock header %}
+
+      {% block sidebar %}
+        {% include 'partials/sidebar.html' %}
+      {% endblock sidebar %}
+
+      {% block content %}
+
+      {% endblock content %}
+    </div>
+
+    {% block javascript %}
+      {% include 'partials/script.html' %}
+    {% endblock javascript %}
+
+    
+    {% block theme_settings %}
+      {% include 'partials/theme-settings.html' %}
+    {% endblock theme_settings %}
+      
+  </body>
+</html>

@@ -1,0 +1,65 @@
+{% load static %}
+
+<!-- details popup -->
+<div class="modal fade" id="user-profile-new">
+    <div class="modal-dialog history-modal-profile">
+        <div class="modal-content">
+            <div class="page-wrapper details-blk">
+                <div class="content">
+                    <div class="text-center right-sidebar-profile mb-3">
+                        <figure class="avatar">
+                            <img src="{% static 'assets/img/users/user-23.jpg' %}" alt="image">
+                        </figure>
+                        <div class="chat-options chat-option-profile">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a href="{% url 'audio_call' %}" class="btn btn-outline-light "
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
+                                        data-bs-original-title="Voice Call">
+                                        <i class="bx bx-phone"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="{% url 'chat' %}" class="btn btn-outline-light" data-bs-toggle="tooltip"
+                                        data-bs-placement="bottom" title="" data-bs-original-title="Chat">
+                                        <i class="bx bx-message-square-dots"></i>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item ">
+                                    <a href="{% url 'video_call' %}" class="btn btn-outline-light profile-open"
+                                        data-bs-toggle="tooltip" data-bs-placement="bottom" title=""
+                                        data-bs-original-title="Video Call">
+                                        <i class="bx bx-video"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-profile-detail">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="modal-userlist">
+                                    <ul>
+                                        <li>Name<span>Thomas</span></li>
+                                        <li>Phone<span>+1 25182 94528</span></li>
+                                        <li>Email<span>thomas@example.com</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="modal-userlist d-flex justify-content-center">
+                                    <ul>
+                                        <li>Total Calls<span>20</span></li>
+                                        <li>Average Call Timing<span>0.30</span></li>
+                                        <li>Average Waiting Time<span>00.5</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /details popup -->

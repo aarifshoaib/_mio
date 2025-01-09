@@ -1,0 +1,582 @@
+{% load static %}
+
+<!-- Add New Invoices -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_add">
+    <div class="offcanvas-header border-bottom">
+        <h4>Add New Invoice</h4>
+        <button type="button"
+            class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+            data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="ti ti-x"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="invoices">
+            <div>
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Client</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_deal"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option>NovaWave LLC</option>
+                            <option>BlueSky Industries</option>
+                            <option>ASilver Hawkdams</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Bill To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Ship To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Project</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_deal"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option>Truelysell</option>
+                            <option>Dreamschat</option>
+                            <option>Servbook</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Amount<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Currency</label>
+                            <select class="select2">
+                                <option>Choose</option>
+                                <option>$</option>
+                                <option>INR</option>
+                                <option>Euro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Invoice Date <span
+                                    class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Due Date<span class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Payment Method</label>
+                            <select class="select">
+                                <option>Choose</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Status</label>
+                            <select class="select">
+                                <option>Choose</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="summernote"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Project</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_deal"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option>NovaWave LLC</option>
+                            <option>BlueSky Industries</option>
+                            <option>ASilver Hawkdams</option>
+                        </select>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-view">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Discount</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="input-table input-table-descripition">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <select>
+                                                <option>%</option>
+                                                <option>5%</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-success-light">
+                                            <i class="ti ti-check"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subtotal-div mb-3">
+                        <ul class="mb-3">
+                            <li>
+                                <h5>Subtotal</h5>
+                                <h6>$0.00</h6>
+                            </li>
+                            <li>
+                                <h5>Discount 2%</h5>
+                                <h6>$0.00</h6>
+                            </li>
+                            <li>
+                                <h5>Extra Discount 0%</h5>
+                                <h6>$0.00</h6>
+                            </li>
+                            <li>
+                                <h5>Tax</h5>
+                                <h6>$0.00</h6>
+                            </li>
+                            <li>
+                                <h5>Total</h5>
+                                <h6>$0.00</h6>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="mb-3">
+                                <label class="col-form-label">Signature Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-form-label">Signature Image</label>
+                                <div class="upload-signature">
+                                    <input type="file">
+                                    <a href="#">Upload Signature</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Notes<span class="text-danger"> *</span></label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Terms & Conditions<span class="text-danger">
+                                    *</span></label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-end">
+                <button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Add New Invoices -->
+
+<!-- Edit Invoices -->
+<div class="offcanvas offcanvas-end offcanvas-large" tabindex="-1" id="offcanvas_edit">
+    <div class="offcanvas-header border-bottom">
+        <h4>Edit Invoice</h4>
+        <button type="button"
+            class="btn-close custom-btn-close border p-1 me-0 d-flex align-items-center justify-content-center rounded-circle"
+            data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="ti ti-x"></i>
+        </button>
+    </div>
+    <div class="offcanvas-body">
+        <form action="invoices">
+            <div>
+                <div class="row">
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Client</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_deal"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option selected>NovaWave LLC</option>
+                            <option>BlueSky Industries</option>
+                            <option>ASilver Hawkdams</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Bill To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Ship To<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Project</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_deal"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option selected>Truelysell</option>
+                            <option>Dreamschat</option>
+                            <option>Servbook</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Amount<span class="text-danger"> *</span></label>
+                            <input class="form-control" type="text" value="2,15,000">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Currency</label>
+                            <select class="select2">
+                                <option>Choose</option>
+                                <option>$</option>
+                                <option>INR</option>
+                                <option>Euro</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Invoice Date <span
+                                    class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" value="15 Oct 2023">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Due Date<span class="text-danger">*</span></label>
+                            <div class="icon-form">
+                                <span class="form-icon"><i class="ti ti-calendar-check"></i></span>
+                                <input type="text" class="form-control datetimepicker" value="20 Oct 2023">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Payment Method</label>
+                            <select class="select">
+                                <option>Choose</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="col-form-label">Status</label>
+                            <select class="select">
+                                <option>Choose</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Description <span class="text-danger">*</span></label>
+                            <div class="summernote"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <label class="col-form-label">Project</label>
+                            <a href="#" class="label-add" data-bs-toggle="modal" data-bs-target="#add_deal"><i
+                                    class="ti ti-square-rounded-plus"></i>Add New</a>
+                        </div>
+                        <select class="select">
+                            <option>Choose</option>
+                            <option>NovaWave LLC</option>
+                            <option>BlueSky Industries</option>
+                            <option>ASilver Hawkdams</option>
+                        </select>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-view">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Discount</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="input-table input-table-descripition">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <select>
+                                                <option>%</option>
+                                                <option>5%</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-success-light">
+                                            <i class="ti ti-check"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-view">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>Discount</th>
+                                    <th>Amount</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="input-table input-table-descripition">
+                                            <input type="text" value="Web Design">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text" value="1">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text" value="$200">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <select>
+                                                <option>2%</option>
+                                                <option>5%</option>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="input-table">
+                                            <input type="text" value="$196">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-danger-light">
+                                            <i class="ti ti-x"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="subtotal-div mb-3">
+                        <ul class="mb-3">
+                            <li>
+                                <h5>Subtotal</h5>
+                                <h6>$196.00</h6>
+                            </li>
+                            <li>
+                                <h5>Discount 2%</h5>
+                                <h6>$4.00</h6>
+                            </li>
+                            <li>
+                                <h5>Extra Discount 0%</h5>
+                                <h6>$0.00</h6>
+                            </li>
+                            <li>
+                                <h5>Tax</h5>
+                                <h6>$0.00</h6>
+                            </li>
+                            <li>
+                                <h5>Total</h5>
+                                <h6>$192.00</h6>
+                            </li>
+                        </ul>
+                        <div class="row">
+                            <div class="mb-3">
+                                <label class="col-form-label">Signature Name</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="mb-0">
+                                <label class="col-form-label">Signature Image</label>
+                                <div class="upload-signature ">
+                                    <input type="file">
+                                    <a href="#" class="text-start">
+                                        <img src="{% static 'assets/img/signature.png' %}" alt="img">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Notes<span class="text-danger"> *</span></label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label class="col-form-label">Terms & Conditions<span class="text-danger">
+                                    *</span></label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex align-items-center justify-content-end">
+                <button type="button" data-bs-dismiss="offcanvas" class="btn btn-light me-2">Cancel</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#create_success">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /Edit Invoices -->
+
+<!-- Delete Invoices -->
+<div class="modal fade" id="delete_invoices" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="avatar avatar-xl bg-danger-light rounded-circle mb-3">
+                        <i class="ti ti-trash-x fs-36 text-danger"></i>
+                    </div>
+                    <h4 class="mb-2">Remove Invoice?</h4>
+                    <p class="mb-0">Are you sure you want to remove <br> invoice you selected.</p>
+                    <div class="d-flex align-items-center justify-content-center mt-4">
+                        <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+                        <a href="{% url 'invoices' %}" class="btn btn-danger">Yes, Delete it</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete Invoices -->
+
+<!-- Add New View -->
+<div class="modal custom-modal fade" id="add_deal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add</h5>
+                <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="ti ti-x"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="invoices">
+                    <div class="mb-3">
+                        <label class="col-form-label">Name</label>
+                        <input type="text" class="form-control" placeholder="Enter Name">
+                    </div>
+                    <div class="modal-btn text-end">
+                        <a href="#" class="btn btn-light" data-bs-dismiss="modal">Cancel</a>
+                        <button type="submit" class="btn btn-danger">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add New View -->

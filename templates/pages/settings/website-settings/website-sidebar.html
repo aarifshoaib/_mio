@@ -1,0 +1,19 @@
+<div class="col-xl-3 col-lg-12 theiaStickySidebar">
+  <!-- Settings Sidebar -->
+  <div class="card">
+    <div class="card-body">
+      <div class="settings-sidebar">
+        <h4 class="fw-semibold mb-3">Website Settings</h4>
+        <div class="list-group list-group-flush settings-sidebar">
+          <a href="{% url 'company_settings' %}" class="fw-medium {% if request.path == '/company-settings' %}active{% endif %}">Company Settings</a>
+          <a href="{% url 'localization' %}" class="fw-medium {% if request.path == '/localization' %}active{% endif %}">Localization</a>
+          <a href="{% url 'prefixes' %}" class="fw-medium {% if request.path == '/prefixes' %}active{% endif %}">Prefixes</a>
+          <a href="{% url 'preference' %}" class="fw-medium {% if request.path == '/preference' %}active{% endif %}">Preference</a>
+          <a href="{% url 'appearance' %}" class="fw-medium {% if request.path == '/appearance' %}active{% endif %}">Appearance</a>
+          <a href="{% url 'language' %}" class="fw-medium {% if request.path == '/language' %}active{% endif %}">Language</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Settings Sidebar -->
+</div>

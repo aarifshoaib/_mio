@@ -1,0 +1,17 @@
+<div class="col-xl-3 col-lg-12 theiaStickySidebar">
+  <!-- Settings Sidebar -->
+  <div class="card">
+    <div class="card-body">
+      <div class="settings-sidebar">
+        <h4 class="fw-semibold mb-3">Financial Settings</h4>
+        <div class="list-group list-group-flush settings-sidebar">
+          <a href="{% url 'payment_gateways' %}" class="fw-medium {% if request.path == '/payment-gateways' %}active{% endif %}">Payment Gateways</a>
+          <a href="{% url 'bank_accounts' %}" class="fw-medium {% if request.path == '/bank-accounts' %}active{% endif %}">Bank Accounts</a>
+          <a href="{% url 'tax_rates' %}" class="fw-medium {% if request.path == '/tax-rates' %}active{% endif %}">Tax Rates</a>
+          <a href="{% url 'currencies' %}" class="fw-medium {% if request.path == '/currencies' %}active{% endif %}">Currencies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /Settings Sidebar -->
+</div>

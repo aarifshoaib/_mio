@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-body pb-0 pt-2">
+    <ul class="nav nav-tabs nav-tabs-bottom">
+      <li class="nav-item me-3">
+        <a href="{% url 'profile' %}" class="nav-link px-0 {% if request.path == '/profile' or request.path == '/security' or request.path == '/notifications' or request.path == '/connected-apps' %}active{% endif %}"><i class="ti ti-settings-cog me-2"></i>General Settings</a>
+      </li>
+      <li class="nav-item me-3">
+        <a href="{% url 'company_settings' %}" class="nav-link px-0 {% if request.path == '/company-settings' or request.path == '/localization' or request.path == '/prefixes' or request.path == '/preference' or request.path == '/appearance' or request.path == '/language' %}active{% endif %}"><i class="ti ti-world-cog me-2"></i>Website Settings</a>
+      </li>
+      <li class="nav-item me-3">
+        <a href="{% url 'invoice_settings' %}" class="nav-link px-0 {% if request.path == '/invoice-settings' or request.path == '/printers' or request.path == '/custom-fields' %}active{% endif %}"><i class="ti ti-apps me-2"></i>App Settings</a>
+      </li>
+      <li class="nav-item me-3">
+        <a href="{% url 'email_settings' %}" class="nav-link px-0 {% if request.path == '/email-settings' or request.path == '/sms-gateways' or request.path == '/gdpr-cookies' %}active{% endif %}"><i class="ti ti-device-laptop me-2"></i>System Settings</a>
+      </li>
+      <li class="nav-item me-3">
+        <a href="{% url 'payment_gateways' %}" class="nav-link px-0 {% if request.path == '/payment-gateways' or request.path == '/bank-accounts' or request.path == '/tax-rates' or request.path == '/currencies' %}active{% endif %}"><i class="ti ti-moneybag me-2"></i>Financial Settings</a>
+      </li>
+      <li class="nav-item">
+        <a href="{% url 'storage' %}" class="nav-link px-0 {% if request.path == '/storage' or request.path == '/ban-ip-address' %}active{% endif %}"><i class="ti ti-flag-cog me-2"></i>Other Settings</a>
+      </li>
+    </ul>
+  </div>
+</div>

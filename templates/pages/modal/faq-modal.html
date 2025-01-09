@@ -1,0 +1,121 @@
+<!-- Add FAQ -->
+<div class="modal fade" id="add_faq" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add FAQ</h5>
+        <div class="d-flex align-items-center mod-toggle">
+          <button class="btn-close custom-btn-close border p-1 me-0 text-dark" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+      <form action="{% url 'faq' %}">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="col-form-label">Category <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">Question <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">Answer <span class="text-danger">*</span></label>
+            <textarea class="form-control" rows="4"></textarea>
+          </div>
+          <div class="mb-0">
+            <label class="col-form-label">Status <span class="text-danger">*</span></label>
+            <div class="d-flex align-items-center">
+              <div class="me-2">
+                <input type="radio" class="status-radio" id="active1" name="status" checked="" />
+                <label for="active1">Active</label>
+              </div>
+              <div>
+                <input type="radio" class="status-radio" id="inactive1" name="status" />
+                <label for="inactive1">Inactive</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="d-flex align-items-center justify-content-end m-0">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Add FAQ -->
+
+<!-- Edit FAQ -->
+<div class="modal custom-modal fade" id="edit_faq" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit FAQ</h5>
+        <div class="d-flex align-items-center mod-toggle">
+          <button class="btn-close custom-btn-close border p-1 me-0 text-dark" data-bs-dismiss="modal" aria-label="Close"><i class="ti ti-x"></i></button>
+        </div>
+      </div>
+      <form action="{% url 'faq' %}">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="col-form-label">Category <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" value="Service" />
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">Question <span class="text-danger">*</span></label>
+            <input type="text" class="form-control" value="How can I book a service" />
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">Answer <span class="text-danger">*</span></label>
+            <textarea class="form-control" rows="4"></textarea>
+          </div>
+          <div class="mb-0">
+            <label class="col-form-label">Status <span class="text-danger">*</span></label>
+            <div class="d-flex align-items-center">
+              <div class="me-2">
+                <input type="radio" class="status-radio" id="active" name="status" checked="" />
+                <label for="active">Active</label>
+              </div>
+              <div>
+                <input type="radio" class="status-radio" id="inactive" name="status" />
+                <label for="inactive">Inactive</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="d-flex align-items-center justify-content-end m-0">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- /Edit FAQ -->
+
+<!-- Delete FAQ -->
+<div class="modal fade" id="delete_faq" role="dialog">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="text-center">
+          <div class="avatar avatar-xl bg-danger-light rounded-circle mb-3">
+            <i class="ti ti-trash-x fs-36 text-danger"></i>
+          </div>
+          <h4 class="mb-2">Remove FAQ?</h4>
+          <p class="mb-0">Are you sure you want to remove it</p>
+          <div class="d-flex align-items-center justify-content-center mt-4">
+            <a href="#" class="btn btn-light me-2" data-bs-dismiss="modal">Cancel</a>
+            <a href="{% url 'faq' %}" class="btn btn-danger">Yes, Delete it</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /Delete FAQ -->
