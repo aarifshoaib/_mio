@@ -1,6 +1,6 @@
 /*
-Author       : Dreamguys
-Template Name: CRMS - Bootstrap Admin Template
+Author       : Arif, Fabs Infotech
+Template Name: Mio
 */
 
 
@@ -24,7 +24,6 @@ $(document).ready(function(){
 	if (localStorage.theme) document.documentElement.setAttribute("data-layout-mode", localStorage.theme);
 
 	//theme Settings 
-
 
 	
 	// Mobile menu sidebar overlay

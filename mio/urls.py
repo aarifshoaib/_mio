@@ -15,7 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from mio_auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path ('', auth_views.Login.as_view(), name='login'),
+    path('login-authentication-check-secret-key-api', auth_views.CheckAuthenticateSecretKeyAPI.as_view()),
+    path('index', auth_views.AgentsList.as_view(), name='index'),
+    path('faq', auth_views.AgentsList.as_view(), name='faq'),
+    path('agents-list/', auth_views.AgentsList.as_view(), name='agents-list'),
+    path('leads', auth_views.AgentsList.as_view(), name='leads'),
+    path('leads-kanban', auth_views.AgentsList.as_view(), name='leads_kanban'),
 ]
