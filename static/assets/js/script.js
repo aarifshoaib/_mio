@@ -194,21 +194,8 @@ $(document).ready(function(){
 			"bInfo": false,
 			"autoWidth": true,
 			"ordering": true,
-			"language": {
-					search: ' ',
-					sLengthMenu: '_MENU_',
-					searchPlaceholder: "Search",
-					info: "_START_ - _END_ of _TOTAL_ items",
-					lengthMenu:     "Show _MENU_ entries",
-					paginate: {
-						next: 'Next <i class=" fa fa-angle-right"></i> ',
-						previous: '<i class="fa fa-angle-left"></i> Prev '
-					},
-				 },
-				initComplete: (settings, json)=>{
-					$('.dataTables_paginate').appendTo('.datatable-paginate');
-					$('.dataTables_length').appendTo('.datatable-length');
-				},	
+			"paging": false,
+				
 		});
 	}
 	

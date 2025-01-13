@@ -1,9 +1,19 @@
+import base64
 from django.shortcuts import render
 from django.views import View
 from django.contrib.auth import authenticate, login, logout
 from django.http import JsonResponse
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.db.models import Q
+from django.views.generic import TemplateView
+import logging
+
+from mio_agents import models
+
 # Create your views here.
 
+
+db_logger = logging.getLogger('db_logger')
 
 class Login(View):
     template_name = 'auth/login.html'
@@ -26,119 +36,84 @@ class CheckAuthenticateSecretKeyAPI(View):
             response_data = {'status': 'error', 'msg': f'Error: {e}', 'login': False, 'otp_input': False}
         return JsonResponse(response_data)
     
+def url_encode_func(url, encode=True):
+    if encode:
+        return base64.urlsafe_b64encode(url.encode()).decode()
+    return base64.urlsafe_b64decode(url.encode()).decode()
+
+class NewAgent(TemplateView):
+    template_name = 'pages/modal/new-agent.html'
+    def get(self, request, *args, **kwargs):
+        context = {
+            'open_modal': True
+        }   
+        return render(request, self.template_name, context=context)
+    
 class AgentsList(View):
-    template_name = 'pages/crm/leads.html';
-    leads = [
-        {
-            "lead_name": "Collins",
-            "company_name": "NovaWave LLC",
-            "company_image": "assets/img/icons/company-icon-01.svg",
-            "company_address": "Newyork, USA",
-            "phone": "+1 875455453",
-            "email": "robertson@example.com",
-            "created_date": "25 Sep 2023, 01:22 pm",
-            "owner": "Hendry",
-            "status": "Closed"
-        },
-        {
-            "lead_name": "Konopelski",
-            "company_name": "BlueSky Industries",
-            "company_image": "assets/img/icons/company-icon-02.svg",
-            "company_address": "Winchester, KY",
-            "phone": "+1 989757485",
-            "email": "sharon@example.com",
-            "created_date": "29 Sep 2023, 04:15 pm",
-            "owner": "Guillory",
-            "status": "Not Contacted"
-        },
-        {
-            "lead_name": "Adams",
-            "company_name": "SilverHawk",
-            "company_image": "assets/img/icons/company-icon-03.svg",
-            "company_address": "Jametown, NY",
-            "phone": "+1 546555455",
-            "email": "vaughan12@example.com",
-            "created_date": "04 Oct 2023, 10:18 am",
-            "owner": "Jami",
-            "status": "Closed"
-        },
-        {
-            "lead_name": "Schumm",
-            "company_name": "SummitPeak",
-            "company_image": "assets/img/icons/company-icon-04.svg",
-            "company_address": "Compton, RI",
-            "phone": "+1 454478787",
-            "email": "jessica13@example.com",
-            "created_date": "17 Oct 2023, 03:31 pm",
-            "owner": "Theresa",
-            "status": "Contacted"
-        },
-        {
-            "lead_name": "Wisozk",
-            "company_name": "RiverStone Ventur",
-            "company_image": "assets/img/icons/company-icon-05.svg",
-            "company_address": "Dayton, OH",
-            "phone": "+1 124547845",
-            "email": "caroltho3@example.com",
-            "created_date": "24 Oct 2023, 09:14 pm",
-            "owner": "Espinosa",
-            "status": "Closed"
-        },
-        {
-            "lead_name": "Heller",
-            "company_name": "Bright Bridge Grp",
-            "company_image": "assets/img/icons/company-icon-06.svg",
-            "company_address": "Lafayette, LA",
-            "phone": "+1 478845447",
-            "email": "dawnmercha@example.com",
-            "created_date": "08 Nov 2023, 09:56 am",
-            "owner": "Martin",
-            "status": "Closed"
-        },
-        {
-            "lead_name": "Gutkowski",
-            "company_name": "CoastalStar Co.",
-            "company_image": "assets/img/icons/company-icon-07.svg",
-            "company_address": "Centerville, VA",
-            "phone": "+1 215544845",
-            "email": "rachel@example.com",
-            "created_date": "14 Nov 2023, 04:19 pm",
-            "owner": "Newell",
-            "status": "Closed"
-        },
-        {
-            "lead_name": "Walter",
-            "company_name": "HarborView",
-            "company_image": "assets/img/icons/company-icon-08.svg",
-            "company_address": "Providence, RI",
-            "phone": "+1 121145471",
-            "email": "jonelle@example.com",
-            "created_date": "23 Nov 2023, 11:14 pm",
-            "owner": "Janet",
-            "status": "Closed"
-        },
-        {
-            "lead_name": "Hansen",
-            "company_name": "Golden Gate Ltd",
-            "company_image": "assets/img/icons/company-icon-09.svg",
-            "company_address": "Swayzee, IN",
-            "phone": "+1 321454789",
-            "email": "jonathan@example.com",
-            "created_date": "10 Dec 2023, 06:43 am",
-            "owner": "Craig",
-            "status": "Closed"
-        },
-        {
-            "lead_name": "Leuschke",
-            "company_name": "Redwood Inc",
-            "company_image": "assets/img/icons/company-icon-10.svg",
-            "company_address": "Florida City, FL",
-            "phone": "+1 278907145",
-            "email": "brook@example.com",
-            "created_date": "25 Dec 2023, 08:17 pm",
-            "owner": "Daniel",
-            "status": "Lost"
-        },
-    ]
+    template_name = 'pages/agents/agents-list.html';
+    PAGINATION_SIZE = 25
+
+    def col2num(self, col: str) -> int:
+        import string
+        if not all(c.isalpha() for c in col):
+            raise ValueError(f"Invalid column name: {col}")
+        num = 0
+        for c in col.upper():
+            num = num * 26 + (ord(c) - ord('A')) + 1
+        return num - 1
+
     def get(self, request):
-        return render(request, self.template_name, {'leads': self.leads})
+        keyword = request.GET.get('keyword', '').strip()
+        get_url = request.get_full_path()
+        
+        if '?keyword' in get_url:
+            get_url = get_url.split('&page=')[0]
+            current_url = f"{get_url}&"
+        else:
+            get_url = get_url.split('?')[0]
+            current_url = f"{get_url}?"
+
+        # Initialize the base query
+        query = models.AgentManagementNewAgentModel.objects.all()
+
+        # Handle search filtering
+        if keyword:
+            try:
+                if 'id=' in keyword:
+                    agent_id = self.col2num(keyword.split('=')[1])
+                    query = query.filter(agent_id=agent_id)
+                else:
+                    query = query.filter(
+                        Q(name__icontains=keyword) |
+                        Q(phone__icontains=keyword) |
+                        Q(district__icontains=keyword) |
+                        Q(place__icontains=keyword)
+                    )
+            except Exception as e:
+                db_logger.error(f"Error in keyword search: {e}")
+                return JsonResponse({'status': 'error', 'message': 'Invalid search keyword'}, status=400)
+
+        # Apply pagination
+        paginator = Paginator(query.order_by('agent_id'), self.PAGINATION_SIZE)
+        page_number = request.GET.get('page', 1)
+        try:
+            agents_page = paginator.get_page(page_number)
+        except PageNotAnInteger:
+            agents_page = paginator.page(1)
+        except EmptyPage:
+            agents_page = paginator.page(paginator.num_pages)
+
+        # Prepare context for rendering
+        context = {
+            'agents': agents_page,
+            'current_url': current_url,
+            'keyword': keyword,
+            'result_cnt': query.count(),
+            'return_url': url_encode_func(request.get_full_path()),  # Ensure `url_encode_func` is defined elsewhere
+        }
+        print (context)
+        # Log user activity
+        db_logger.info(f'<b style="color:red">{request.user}</b>: Accessed Agent List Page')
+
+        # Render the response
+        return render(request, self.template_name, context=context)

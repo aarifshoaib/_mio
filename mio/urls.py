@@ -24,6 +24,6 @@ urlpatterns = [
     path('index', auth_views.AgentsList.as_view(), name='index'),
     path('faq', auth_views.AgentsList.as_view(), name='faq'),
     path('agents-list/', auth_views.AgentsList.as_view(), name='agents-list'),
-    path('leads', auth_views.AgentsList.as_view(), name='leads'),
+    path('new-agent/', auth_views.NewAgent.as_view(), name='new-agent'),
     path('leads-kanban', auth_views.AgentsList.as_view(), name='leads_kanban'),
 ]
