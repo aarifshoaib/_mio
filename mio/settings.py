@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mio_auth',
-    'mio_agents'
+    'mio_agents',
+    'job',
+    
 ]
 
 MIDDLEWARE = [
@@ -66,6 +68,9 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'libraries': {  # Custom template tags can be defined here
+                'base_tags': 'mio_agents.templatetags.base_tags',
+            },
         },
     },
 ]
@@ -83,15 +88,18 @@ WSGI_APPLICATION = 'mio.wsgi.application'
 #     }
 # }
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'arifsafiyullah',
-        'USER': 'arifsafiyullah',
-        'PASSWORD': '',
-        'HOST': 'localhost'
+        'NAME': 'myindia_overseas',  # The database name you created in PostgreSQL
+        'USER': 'postgres',  # PostgreSQL username
+        'PASSWORD': 'YaallahU@8227',  # Your PostgreSQL password
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
+
 
 
 # Password validation

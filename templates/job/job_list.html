@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container mt-4">
+        <h1>Job List</h1>
+        <button class="btn btn-primary" data-bs-toggle="offcanvas" data-bs-target="#job-add">Add New Job</button>
+
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Department</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.department }}</td>
+                    <td>{{ job.job_type }}</td>
+                    <td>{{ job.status }}</td>
+                    <td>{{ job.description }}</td>
+                    <td>
+                        <!-- Edit link -->
+                        <a href="{% url 'jobs:job-edit' job.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <!-- Delete link -->
+                        <a href="{% url 'jobs:job-delete' job.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this job?')">Delete</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6">No jobs found</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Add Job Form (Offcanvas) -->
+        <div class="offcanvas offcanvas-end" id="job-add" tabindex="-1" aria-labelledby="jobAddLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="jobAddLabel">Add New Job</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label for="job-title" class="form-label">Job Title:</label>
+                        <input type="text" class="form-control" id="job-title" name="job_title" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="department" class="form-label">Department:</label>
+                        <select class="form-select" id="department" name="department">
+                            <option>IT</option>
+                            <option>HR</option>
+                            <option>Marketing</option>
+                            <option>Finance</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="job-type" class="form-label">Job Type:</label>
+                        <select class="form-select" id="job-type" name="job_type">
+                            <option value="full_time">Full Time</option>
+                            <option value="part_time">Part Time</option>
+                            <option value="contract">Contract</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Status:</label>
+                        <select class="form-select" id="status" name="status">
+                            <option value="active">Active</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
