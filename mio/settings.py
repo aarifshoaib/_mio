@@ -89,18 +89,26 @@ WSGI_APPLICATION = 'mio.wsgi.application'
 # }
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'myindia_overseas',  # The database name you created in PostgreSQL
+#         'USER': 'postgres',  # PostgreSQL username
+#         'PASSWORD': 'YaallahU@8227',  # Your PostgreSQL password
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myindia_overseas',  # The database name you created in PostgreSQL
-        'USER': 'postgres',  # PostgreSQL username
-        'PASSWORD': 'YaallahU@8227',  # Your PostgreSQL password
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'arifsafiyullah',
+        'USER': 'arifsafiyullah',
+        'PASSWORD': '',
+        'HOST': 'localhost'
     }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
