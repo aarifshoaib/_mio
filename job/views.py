@@ -1,8 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-# Create your views here.
 from .models import Job
-
-
 
 def job_list(request):
     if request.method == 'POST':
@@ -23,13 +20,11 @@ def job_list(request):
         )
         
         # Redirect to the same job list page
-        return redirect('jobs:job-list')
+        return redirect('job:job-list')  # Correct redirect
 
     # Get all jobs to display in the table
     jobs = Job.objects.all()
     return render(request, 'job/job_list.html', {'jobs': jobs})
-
- # Assuming you have a form for the Job model
 
 def job_edit(request, job_id):
     job = get_object_or_404(Job, id=job_id)
@@ -42,8 +37,8 @@ def job_edit(request, job_id):
         job.description = request.POST.get('description')
         job.save()
 
-        # Redirect using the namespace 'jobs'
-        return redirect('job:job-list')
+        # Redirect using the correct namespace 'job'
+        return redirect('job:job-list')  # Correct redirect
 
     return render(request, 'job/job_edit.html', {'job': job})
 
@@ -52,8 +47,6 @@ def job_delete(request, id):
 
     if request.method == "POST":
         job.delete()
-        return redirect('job:job-list')  # Ensure proper redirection
+        return redirect('job:job-list')  # Correct redirect
 
     return render(request, 'job/job_confirm_delete.html', {'job': job})
-
-# Create your views here.

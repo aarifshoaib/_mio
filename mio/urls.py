@@ -16,12 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from mio_auth import views as auth_views
-from job import views as job_views
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+    path('job-management/', include('job.urls')),
     path ('', auth_views.Login.as_view(), name='login'),
     path('login-authentication-check-secret-key-api', auth_views.CheckAuthenticateSecretKeyAPI.as_view()),
     path('index', auth_views.AgentsList.as_view(), name='index'),
@@ -29,8 +29,5 @@ urlpatterns = [
     path('agents-list/', auth_views.AgentsList.as_view(), name='agents-list'),
     path('new-agent/', auth_views.NewAgent.as_view(), name='new-agent'),
     path('leads-kanban', auth_views.AgentsList.as_view(), name='leads_kanban'),
-     path('job-management/', job_views.job_list, name='job_list'),  # Use job_views.job_list here
-    path('job-management/job-list/', job_views.job_list, name='job_list'),
-    path('job-management/edit/<int:job_id>/', job_views.job_edit, name='job-edit'),
-    path('job-management/job-delete/<int:id>/', job_views.job_delete, name='job-delete'),
+    
 ]
