@@ -20,7 +20,7 @@ def job_list(request):
         )
         
         # Redirect to the same job list page
-        return redirect('job:job-list')  # Correct redirect
+        return redirect('job-list')  # Correct redirect
 
     # Get all jobs to display in the table
     jobs = Job.objects.all()
@@ -38,15 +38,15 @@ def job_edit(request, job_id):
         job.save()
 
         # Redirect using the correct namespace 'job'
-        return redirect('job:job-list')  # Correct redirect
+        return redirect('job-list')  # Correct redirect
 
-    return render(request, 'job/job_edit.html', {'job': job})
+    return render(request, 'job_edit.html', {'job': job})
 
 def job_delete(request, id):
     job = get_object_or_404(Job, id=id)
 
     if request.method == "POST":
         job.delete()
-        return redirect('job:job-list')  # Correct redirect
+        return redirect('job-list')  # Correct redirect
 
-    return render(request, 'job/job_confirm_delete.html', {'job': job})
+    return render(request, 'job_confirm_delete.html', {'job': job})
