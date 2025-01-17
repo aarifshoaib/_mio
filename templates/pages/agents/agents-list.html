@@ -154,7 +154,9 @@
     <!-- /Page Wrapper -->
 
     {% block agent-modal %}
-    <div id="aaaaaa"></div>
+        <div id="agents">
+            <!-- Add Agent Modal -->
+        </div>
     {% endblock agent-modal %}
 
     <script>
@@ -170,8 +172,33 @@
                     return response.text();
                 })
                 .then(html => {
-                    const modalContainer = document.getElementById('aaaaaa');
+                    const modalContainer = document.getElementById('agents');
                     modalContainer.innerHTML = html;
+                    if ($('.select2').length > 0) {
+                            $(".select2").select2();
+                        }
+                        
+                        if ($('.select').length > 0) {
+                            $('.select').select2({
+                                minimumResultsForSearch: -1,
+                                width: '100%'
+                            });
+                        }
+                        
+                    if ($('.select-img').length > 0) {
+                        function formatState (state) {
+                        if (!state.id) { return state.text; }
+                        var $state = $(
+                            '<span><img src="' + $(state.element).attr('data-image') + '" class="img-flag" / " width="16px"> ' + state.text + '</span>'
+                        );
+                        return $state;
+                        };
+                        $('.select-img').select2({
+                            minimumResultsForSearch: Infinity,
+                            templateResult: formatState,
+                            templateSelection: formatState
+                        });
+                    }
                 })
                 .catch(error => {
                     console.error('Error loading modal:', error);
