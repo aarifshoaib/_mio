@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from mio_auth import views as auth_views
-from . import views
+from . import views 
 from job import views as job_views
+from mio_customer import views as customer_views
+from job.views import job_list
+from mio_customer.views import CreateCustomer
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,7 +31,12 @@ urlpatterns = [
     path('agents-list/', auth_views.AgentsList.as_view(), name='agents-list'),
     path('new-agent/', auth_views.NewAgent.as_view(), name='new-agent'),
     path('leads-kanban', auth_views.AgentsList.as_view(), name='leads_kanban'),
-    path('job-management/', job_views.job_list, name='job-list'),
+    path('job-management/', job_views.job_list, name='job-management-list'),  
     path('job-management/edit/<int:job_id>/', job_views.job_edit, name='job-edit'),
     path('job-management/delete/<int:id>/', job_views.job_delete, name='job-delete'), 
+    path('job/create/', job_views.job_create, name='job-create'),
+     path('job/list/', job_views.job_list, name='job-list'),
+     #enter customer_module url
+    path('customer-list/', customer_views.CustomerList.as_view(), name='customer-list'),
+  path('create-customer/', CreateCustomer.as_view(), name='create-customer'),
 ]

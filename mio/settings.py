@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'mio_auth',
     'mio_agents',
     'job',
+    'mio_customer',
+  
     
 ]
 
@@ -89,17 +91,25 @@ WSGI_APPLICATION = 'mio.wsgi.application'
 # }
 
 
+#DATABASES = {
+#'default': {
+         #'ENGINE': 'django.db.backends.postgresql',
+         #'NAME': 'myindia_overseas',  # The database name you created in PostgreSQL
+        #'USER': 'postgres',  # PostgreSQL username
+        # 'PASSWORD': 'YaallahU@8227',  # Your PostgreSQL password
+       # 'HOST': 'localhost',
+       #  'PORT': '5432',
+    # }
+# }
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'myindia_overseas',  # The database name you created in PostgreSQL
-        'USER': 'postgres',  # PostgreSQL username
-        'PASSWORD': 'YaallahU@8227',  # Your PostgreSQL password
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': 'miodb_local',
+        'USER': 'postgres',
+        'PASSWORD': 'Windows*1',
+        'HOST': '217.164.13.22',
     }
 }
-
 
 
 # Password validation
