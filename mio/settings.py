@@ -101,13 +101,31 @@ WSGI_APPLICATION = 'mio.wsgi.application'
        #  'PORT': '5432',
     # }
 # }
+<<<<<<< HEAD
+=======
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'arifsafiyullah',
+#         'USER': 'arifsafiyullah',
+#         'PASSWORD': '',
+#         'HOST': 'localhost'
+#     }
+# }
+
+>>>>>>> 1e4be9d761d0c582cd6feae2d1b8b704a525d700
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'miodb_local',
         'USER': 'postgres',
         'PASSWORD': 'Windows*1',
+<<<<<<< HEAD
         'HOST': '217.164.13.22',
+=======
+        'HOST': '217.164.13.22'
+>>>>>>> 1e4be9d761d0c582cd6feae2d1b8b704a525d700
     }
 }
 
